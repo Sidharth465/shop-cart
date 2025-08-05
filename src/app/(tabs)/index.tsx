@@ -6,13 +6,13 @@ import {
   ActivityIndicator,
   FlatList,
   RefreshControl,
-  SafeAreaView,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { Button } from "../../components/Button";
 import { ProductCard } from "../../components/ProductCard";
 import { ProductDetailsSheet } from "../../components/ProductDetailsSheet";
@@ -48,7 +48,6 @@ export default function ProductsScreen() {
     setRefreshing(true);
     await fetchProducts();
     setRefreshing(false);
-    showToast.info("Products refreshed successfully", "Refreshed");
   };
 
   const handleProductPress = (product: any) => {
@@ -157,7 +156,7 @@ export default function ProductsScreen() {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView edges={["top"]} style={styles.container}>
       {renderHeader()}
       <FlatList
         data={filteredProducts}
@@ -275,7 +274,6 @@ const styles = StyleSheet.create({
   },
   listContainer: {
     paddingHorizontal: 16,
-    paddingBottom: 20,
   },
   row: {
     justifyContent: "space-between",

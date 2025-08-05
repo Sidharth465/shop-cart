@@ -4,12 +4,12 @@ import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import {
   FlatList,
-  SafeAreaView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { Button } from "../../components/Button";
 import { useAppStore } from "../../store";
 import { showToast } from "../../utils/toast";
@@ -204,7 +204,7 @@ export default function CartScreen() {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView edges={["top"]} style={styles.container}>
       {renderHeader()}
       <FlatList
         data={cartItems}
